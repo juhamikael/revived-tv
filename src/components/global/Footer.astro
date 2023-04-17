@@ -1,0 +1,19 @@
+---
+import "../styles/footer.css";
+const today = new Date();
+---
+
+<footer class="astro-footer font-montserrat flex items-center content-center">
+  <div>
+    &copy; {today.getFullYear()} Revived. All rights reserved.
+  </div>
+</footer>
+<style>
+  .astro-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 50px !important;
+    color: #fff !important;
+  }
+</style>

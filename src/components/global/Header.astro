@@ -1,0 +1,27 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<header>
+  <section class="flex items-center gap-x-8">
+    <img alt="logo" src="/images/revived-logo.svg" height={60} width={60} />
+    <nav class="flex font-montserrat text-white gap-x-4">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/artists">Artists</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/music">Music</HeaderLink>
+      <HeaderLink href="/videos">Videos</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/contact">Contact</HeaderLink>
+    </nav>
+  </section>
+</header>
+<style>
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
+</style>

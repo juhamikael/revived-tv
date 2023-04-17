@@ -1,0 +1,25 @@
+---
+const { spotifyUrl } = Astro.props;
+import { parseSpotifyUrl } from "../utils/functions";
+console.log("Url", spotifyUrl);
+---
+
+<>
+  <div class="flex justify-center"></div>
+  <div>
+    <div class="flex text-white">
+      <div class="flex flex-col">
+        <div class="text-4xl">Stream</div>
+        <iframe
+          src={`https://open.spotify.com/embed/artist/${parseSpotifyUrl(
+            spotifyUrl
+          )}?utm_source=generator&theme=0`}
+          class="mt-4 mb-10"
+          width="650"
+          height="380"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</>

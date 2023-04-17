@@ -1,0 +1,22 @@
+---
+import Markdown from "@astrojs/markdown-component";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const about = await getCollection("about");
+console.log(about);
+---
+
+<Layout>
+  <section>
+    {
+      about.map((data) => (
+        <div class="font-montserrat">
+          <h2 class="text-3xl font-bold my-2 text-white">{data.data.title}</h2>
+          <Markdown>
+            <section class="prose dark:prose-invert">{data.body}</section>
+          </Markdown>
+        </div>
+      ))
+    }
+  </section>
+</Layout>

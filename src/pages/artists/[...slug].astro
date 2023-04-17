@@ -1,0 +1,114 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Markdown from "@astrojs/markdown-component";
+import { Icon } from "astro-icon";
+import SpotifyPlayer from "../../components/SpotifyPlayer.astro";
+import { mapList } from "../../utils/functions";
+
+export async function getStaticPaths() {
+  const blog = await getCollection("artists");
+  return blog.map((artist) => ({
+    params: { slug: artist.data.slug },
+    props: { artist },
+  }));
+}
+const { artist } = Astro.props;
+const artist_slug = artist.data.slug;
+console.log("Artist", artist_slug);
+
+const current_artist = await getCollection("artists");
+const artist_data = current_artist.find(
+  (artist) => artist.data.slug === artist_slug
+);
+
+const logos = {
+  spotify: {
+    name: "Spotify",
+    logoPack: "mdi",
+    logoName: "spotify",
+  },
+  youtube: {
+    name: "YouTube",
+    logoPack: "mdi",
+    logoName: "youtube",
+  },
+  soundcloud: {
+    name: "SoundCloud",
+    logoPack: "mdi",
+    logoName: "soundcloud",
+  },
+  instagram: {
+    name: "Instagram",
+    logoPack: "mdi",
+    logoName: "instagram",
+  },
+  twitter: {
+    name: "Twitter",
+    logoPack: "mdi",
+    logoName: "twitter",
+  },
+  discord: {
+    name: "Discord",
+    logoPack: "mdi",
+    logoName: "discord",
+  },
+};
+---
+
+<Layout>
+  <div class="grid grid-cols-2 font-montserrat text-3xl">
+    <img
+      src={artist_data?.data.image}
+      class="object-fit h-96 w-96 object-cover rounded-3xl"
+    />
+    <section class="mx-5 mt-5 text-white w-full">
+      <h1 class="font-bold">{artist_data?.data.name}</h1>
+      <hr class="border-gray-500 my-2" />
+      <div class="my-1">
+        <span class="text-gray-white font-bold text-sm"
+          >{mapList(artist_data?.data.artistType)}</span
+        >
+      </div>
+
+      <Markdown>
+        <section class="prose prose-sm dark:prose-invert">
+          {artist_data?.body}
+        </section>
+      </Markdown>
+      <div class="flex flex-row gap-x-2 mt-4 items-center">
+        {
+          Object.entries(artist_data?.data.socials || {}).map(
+            ([platform, url]) => (
+              console.log("Platform", platform),
+              (
+                <a
+                  href={url || ""}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mx-2"
+                >
+                  <Icon
+                    pack={logos[platform].logoPack}
+                    name={logos[platform].logoName}
+                    size="1x"
+                  />
+                </a>
+              )
+            )
+          )
+        }
+      </div>
+    </section>
+  </div>
+  {
+    artist_data?.data.spotify && (
+      <section class="mt-16">
+        <hr class="border-gray-500 my-12" />
+        <div class="">
+          <SpotifyPlayer spotifyUrl={artist_data?.data.spotify} />
+        </div>
+      </section>
+    )
+  }
+</Layout>

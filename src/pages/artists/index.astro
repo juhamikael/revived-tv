@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Markdown from "@astrojs/markdown-component";
+import ArtistCard from "../../components/ArtistCard.astro";
+
+const artists = (await getCollection("artists")).sort(
+  (a, b) => a.data.index - b.data.index
+);
+console.log(artists);
+---
+
+<Layout>
+  <div class="grid grid-cols-4 gap-y-4">
+    {
+      artists.map((artist) => (
+        <>
+          <ArtistCard
+            name={artist.data.name}
+            image={artist.data.image}
+            slug={artist.data.slug}
+          />
+        </>
+      ))
+    }
+  </div>
+</Layout>
