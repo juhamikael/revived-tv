@@ -6,16 +6,17 @@ import { Icon } from "@iconify/react";
 const Contact: React.FC = () => {
   return (
     <div className="flex justify-center">
-      <StyledTabs defaultValue="say-hi" className="w-full">
-        <Tabs.List>
-          <Tabs.Tab
-            value="say-hi"
-            icon={<Icon icon="ri:file-music-fill" />}
-            className="w-full"
-          >
-            Say Hi
-          </Tabs.Tab>
-          {/* <Tabs.Tab
+      <div className="w-2/4">
+        <StyledTabs defaultValue="say-hi" className="w-full">
+          <Tabs.List>
+            <Tabs.Tab
+              value="say-hi"
+              icon={<Icon icon="ri:file-music-fill" />}
+              className="w-full"
+            >
+              Say Hi
+            </Tabs.Tab>
+            {/* <Tabs.Tab
             value="music-submission"
             icon={<Icon icon="ri:file-music-fill" />}
             className="w-60"
@@ -29,19 +30,20 @@ const Contact: React.FC = () => {
           >
             Image Submission
           </Tabs.Tab> */}
-        </Tabs.List>
-        <Tabs.Panel value="say-hi" pt="xs">
-          <SayHi />
-        </Tabs.Panel>
-        {/* 
+          </Tabs.List>
+          <Tabs.Panel value="say-hi" pt="xs">
+            <SayHi />
+          </Tabs.Panel>
+          {/* 
         <Tabs.Panel value="music-submission" pt="xs">
           <AudioForm />
         </Tabs.Panel> */}
 
-        {/* <Tabs.Panel value="image-submission" pt="xs">
+          {/* <Tabs.Panel value="image-submission" pt="xs">
           <ImageForm />
         </Tabs.Panel> */}
-      </StyledTabs>
+        </StyledTabs>
+      </div>
     </div>
   );
 };

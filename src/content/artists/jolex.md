@@ -1,6 +1,6 @@
 ---
 name: Jol3x
-slug: jolex
+customSlug: jolex
 index: 3
 artistType: ["Artist", "Composer", "DJ", "Producer", "Visual"]
 socials:

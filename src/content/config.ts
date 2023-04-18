@@ -6,43 +6,39 @@ const about = defineCollection({
   }),
 });
 
-const artist = defineCollection({
+const artists = defineCollection({
   schema: z.object({
     name: z.string(),
-    slug: z.string(),
+    customSlug: z.string(),
     index: z.number(),
-    artistType: z.enum([
-      "Artist",
-      "Composer",
-      "DJ",
-      "Producer",
-      "Remixer",
-      "Resident Sleeper",
-      "SoundFX",
-      "Visual",
-    ]),
-    socials: z
-      .record(
-        z.object({
-          url: z.string(),
-          name: z.string(),
-        })
-      )
-      .refine(
-        (value) => {
-          const allowedKeys = [
-            "spotify",
-            "youtube",
-            "soundcloud",
-            "twitter",
-            "discord",
-          ];
-          return Object.keys(value).every((key) => allowedKeys.includes(key));
-        },
-        {
-          message: "Invalid social media platform",
-        }
-      ),
+    artistType: z.array(
+      z.enum([
+        "Artist",
+        "Composer",
+        "DJ",
+        "Producer",
+        "Remixer",
+        "Resident Sleeper",
+        "SoundFX",
+        "Visual",
+      ])
+    ),
+    socials: z.record(z.string()).refine(
+      (value) => {
+        const allowedKeys = [
+          "spotify",
+          "youtube",
+          "instagram",
+          "soundcloud",
+          "twitter",
+          "discord",
+        ];
+        return Object.keys(value).every((key) => allowedKeys.includes(key));
+      },
+      {
+        message: "Invalid social media platform",
+      }
+    ),
     image: z.string(),
     spotify: z.string().optional(),
   }),
@@ -66,4 +62,4 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { about, artist, news };
+export const collections = { about, artists, news };

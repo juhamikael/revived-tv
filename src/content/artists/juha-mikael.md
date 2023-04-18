@@ -1,6 +1,6 @@
 ---
 name: Juha Mikael
-slug: juha-mikael
+customSlug: juha-mikael
 index: 2
 artistType: ["Artist", "Composer", "DJ", "Producer", "Remixer"]
 socials:

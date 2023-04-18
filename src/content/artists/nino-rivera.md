@@ -1,6 +1,6 @@
 ---
 name: Nino Rivera
-slug: nino-rivera
+customSlug: nino-rivera
 index: 1
 artistType: ["Artist", "Composer", "DJ", "Producer", "Remixer"]
 socials:

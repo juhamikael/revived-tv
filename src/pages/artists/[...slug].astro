@@ -9,74 +9,80 @@ import { mapList } from "../../utils/functions";
 export async function getStaticPaths() {
   const blog = await getCollection("artists");
   return blog.map((artist) => ({
-    params: { slug: artist.data.slug },
+    params: { slug: artist.data.customSlug },
     props: { artist },
   }));
 }
 const { artist } = Astro.props;
-const artist_slug = artist.data.slug;
+const artist_slug = artist.data.customSlug;
 
 const current_artist = await getCollection("artists");
 const artist_data = current_artist.find(
-  (artist) => artist.data.slug === artist_slug
+  (artist) => artist.data.customSlug === artist_slug
 );
 
 import { socialMedia } from "../../utils/navbarItems";
 ---
 
 <Layout>
-  <div class="grid grid-cols-2 font-montserrat text-3xl">
-    <img
-      src={artist_data?.data.image}
-      class="object-fit h-96 w-96 object-cover rounded-3xl"
-    />
-    <section class="mx-5 mt-5 text-white w-full">
-      <h1 class="font-bold">{artist_data?.data.name}</h1>
-      <hr class="border-gray-500 my-2" />
-      <div class="my-1">
-        <span class="text-gray-white font-bold text-sm"
-          >{mapList(artist_data?.data.artistType)}</span
-        >
-      </div>
+  <div class="flex justify-center">
+    <div class="w-2/4">
+      <section class="grid grid-cols-2 font-montserrat text-3xl">
+        <img
+          src={artist_data?.data.image}
+          class="object-fit h-[600px] w-full mt-10 object-cover rounded-3xl"
+        />
+        <section id="basic-info" class="mt-5 mx-10 text-white w-full">
+          <h1 class="font-bold">{artist_data?.data.name}</h1>
+          <hr class="border-gray-500 my-2" />
+          <div class="my-1">
+            <span class="text-gray-white font-bold text-sm"
+              >{mapList(artist_data?.data.artistType)}</span
+            >
+          </div>
 
-      <Markdown>
-        <section class="prose prose-sm dark:prose-invert">
-          {artist_data?.body}
-        </section>
-      </Markdown>
-      <div class="flex flex-row gap-x-2 mt-4 items-center">
-        {
-          Object.entries(artist_data?.data.socials || {}).map(
-            ([platform, url]) => (
-              console.log("Platform", platform),
-              (
-                <a
-                  href={url || ""}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mx-2"
-                >
-                  <Icon
-                    pack={socialMedia[platform].logoPack}
-                    name={socialMedia[platform].logoName}
-                    size="1x"
-                  />
-                </a>
+          <Markdown>
+            <section class="prose prose-sm dark:prose-invert">
+              {artist_data?.body}
+            </section>
+          </Markdown>
+          <div class="flex flex-row gap-x-2 mt-4 items-center">
+            {
+              Object.entries(artist_data?.data.socials || {}).map(
+                ([platform, url]) => (
+                  console.log("Platform", platform),
+                  (
+                    <a
+                      href={url || ""}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mx-2"
+                    >
+                      <Icon
+                        pack={socialMedia[platform].logoPack}
+                        name={socialMedia[platform].logoName}
+                        size="1x"
+                      />
+                    </a>
+                  )
+                )
               )
-            )
+            }
+          </div>
+        </section>
+      </section>
+      <section id="music">
+        {
+          artist_data?.data.spotify && (
+            <section class="mt-16">
+              <hr class="border-gray-500 my-12" />
+              <div class="">
+                <SpotifyPlayer spotifyUrl={artist_data?.data.spotify} />
+              </div>
+            </section>
           )
         }
-      </div>
-    </section>
-  </div>
-  {
-    artist_data?.data.spotify && (
-      <section class="mt-16">
-        <hr class="border-gray-500 my-12" />
-        <div class="">
-          <SpotifyPlayer spotifyUrl={artist_data?.data.spotify} />
-        </div>
       </section>
-    )
-  }
+    </div>
+  </div>
 </Layout>
