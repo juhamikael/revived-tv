@@ -1,10 +1,10 @@
-.animate {
+.zoom {
   scale: 1;
 }
 
-.animate:hover {
+.zoom:hover {
   scale: 1.05;
-  animation: animate 0.2s ease-in-out;
+  animation: zoom 0.2s ease-in-out;
   animation-fill-mode: forwards;
 }
 /*When hover is left return slowly*/
@@ -13,7 +13,7 @@
   transition: box-shadow 0.3s;
 }
 
-@keyframes animate {
+@keyframes zoom {
   0% {
     transform: scale(0.95);
   }

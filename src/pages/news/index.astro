@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import "../../styles/artists.css";
+import { Icon } from "astro-icon";
+const posts = (await getCollection("news")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout>
+  <section>
+    <ul class="w-full">
+      {
+        posts.map((post) => (
+          <li class="flex text-white font-montserrat justify-center my-6 zoom">
+            <a
+              href={`/news/${post.slug}/`}
+              class="flex flex-col p-4 gap-y-2 w-full border border-white/10 rounded-xl "
+            >
+              <div class="font-bold ml-8 text-orange-300 visited:text-orange-300 mt-4">
+                {post.data.title}
+              </div>
+              <div class="flex justify-between gap-x-8">
+                <div class="text-sm ml-8">{post.data.description}</div>
+                <img src={post.data.heroImage} class="w-60 rounded-xl mr-8" />
+              </div>
+              <div class="flex mt-10 items-center justify-between mb-4">
+                <FormattedDate
+                  className="w-32 ml-8 text-sm"
+                  date={post.data.pubDate}
+                />
+                <Icon name="arrow-right" pack="feather" class="w-5 mr-8 " />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

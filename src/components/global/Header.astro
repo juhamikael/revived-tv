@@ -1,5 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+
+import ContactIcons from "../ContactIcons";
 ---
 
 <header>
@@ -11,8 +13,14 @@ import HeaderLink from "./HeaderLink.astro";
       <HeaderLink href="/about">About</HeaderLink>
       <HeaderLink href="/music">Music</HeaderLink>
       <HeaderLink href="/videos">Videos</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/news">News</HeaderLink>
       <HeaderLink href="/contact">Contact</HeaderLink>
+      <div class="flex items-center gap-x-4 ml-6">
+        <ContactIcons socialMedia="spotify" client:load />
+        <ContactIcons socialMedia="instagram" client:load />
+        <ContactIcons socialMedia="youtube" client:load />
+        <ContactIcons socialMedia="discord" client:load />
+      </div>
     </nav>
   </section>
 </header>

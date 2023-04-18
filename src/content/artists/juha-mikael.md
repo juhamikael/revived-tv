@@ -13,8 +13,10 @@ image: "/images/artists/juha-mikael.png"
 spotify: "https://open.spotify.com/artist/2heJl7jzvTYoHyR5xwSSea?si=gLjTaLmzQhSQ_C0pUTI0Tw"
 ---
 
-Born in Finland, Nino graduated at the electronic music community college at Turku (FIN). He has actively built a name for himself as a DJ and producer.
+Meet Juha Mikael, a multifaceted music producer with 12 years of experience. Specializing in Progressive House, he has a penchant for creating captivating melodies that resonate with listeners. In addition to being a music producer, Juha Mikael is also a DJ who is passionate about sharing his love for music with others.
 
-His passion for music is reflected in his diverse output, as he enjoys experimenting with different sounds and styles. This diversity has earned him recognition from some of the biggest names in the industry.
+Inspired by the legendary Avicii, he strives to push the boundaries of electronic music, always looking for new ways to express his creativity.
 
-Various appearances on Finnish national radio station YLEX and solo sets at Emergenza 2023, where he progressed to the semifinals, Nino has established himself as a rising star in the music industry. His continued growth as an artist promises even greater success in the future.
+His passion for music extends to his dedication to the art of software development, as he is currently pursuing studies in the field. This website is mainly made by him. A testament to his technical prowess, Juha Mikael expertly navigates both FL Studio and Ableton, harnessing the full potential of these digital audio workstations to craft unforgettable musical experiences.
+
+With a unique blend of artistic talent, technical know-how, and an unwavering passion for music, Juha Mikael is truly a force to be reckoned with in the world of electronic music production.

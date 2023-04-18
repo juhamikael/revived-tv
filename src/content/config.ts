@@ -48,7 +48,7 @@ const artist = defineCollection({
   }),
 });
 
-const blog = defineCollection({
+const news = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
@@ -66,4 +66,4 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { about, artist, blog };
+export const collections = { about, artist, news };

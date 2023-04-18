@@ -75,7 +75,7 @@ const ArtistList: React.FC = () => {
                     }`}
                     onClick={() => selectPlatform(Platform.YouTube)}
                   >
-                    <p className="flex flex-row items-center animate">
+                    <p className="flex flex-row items-center zoom">
                       <Icon
                         icon="mdi:youtube"
                         height={25}
@@ -92,7 +92,7 @@ const ArtistList: React.FC = () => {
                     }`}
                     onClick={() => selectPlatform(Platform.SoundCloud)}
                   >
-                    <p className="flex flex-row items-center animate">
+                    <p className="flex flex-row items-center zoom">
                       <Icon
                         icon="mdi:soundcloud"
                         height={25}
@@ -107,7 +107,7 @@ const ArtistList: React.FC = () => {
                     }`}
                     onClick={() => selectPlatform(Platform.Spotify)}
                   >
-                    <p className="flex flex-row items-center animate">
+                    <p className="flex flex-row items-center zoom">
                       <Icon
                         icon="mdi:spotify"
                         height={25}

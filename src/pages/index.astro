@@ -1,56 +1,53 @@
 ---
 import Layout from "../layouts/Layout.astro";
-("../layouts/Layout.astro");
+import Carousel from "../components/CustomCarousel";
+import { getCollection } from "astro:content";
+
+// Get latest blog post
+
+const posts = (await getCollection("news")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+const latestPost = posts[posts.length - 1];
+const formatDate = (date: Date) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(date).toLocaleDateString("en-US", options);
+};
 ---
 
-<Layout>
+<Layout client:load>
   <body>
     <main>
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template. This template serves as a lightweight, minimally-styled starting
-        point for anyone looking to build a personal website, blog, or portfolio
-        with Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add
-        tools like Tailwind, React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>
-          Edit the site header items in <code>src/components/Header.astro</code>
-        </li>
-        <li>
-          Add your name to the footer in <code>src/components/Footer.astro</code
-          >
-        </li>
-        <li>
-          Check out the included blog posts in <code>src/pages/blog/</code>
-        </li>
-        <li>
-          Customize the blog post page layout in <code
-            >src/layouts/BlogPost.astro</code
-          >
-        </li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to <a
-          href="https://docs.astro.build/"
-          >read the docs
-        </a> or <a href="https://astro.build/chat">join us on Discord</a> to ask
-        questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out <a
-          href="https://github.com/Charca/astro-blog-template"
-          >astro-blog-template
-        </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
+      <!-- <Carousel
+        images={[
+          "images/carousel/Carousel_1.png",
+          "images/carousel/Carousel_2.png",
+        ]}
+      /> -->
+
+      <div class="mt-10 font-montserrat">
+        <a class="text-white" href={`news/${latestPost.slug}`}>
+          <div class="border border-white/10 rounded-xl w-full pb-10 relative">
+            <img src="images/carousel/Carousel_1.png" class="rounded-xl" />
+            <h2
+              class="text-lg font-bold absolute top-4 left-4 bg-black bg-opacity-50 px-2 py-1 rounded-br-md"
+            >
+              News
+            </h2>
+            <div class="flex flex-col mt-4 ml-4 gap-y-10">
+              <div>
+                <h2 class="text-lg font-bold text-orange-300 u">
+                  {latestPost.data.title}
+                </h2>
+                <h2 class="text-sm">{latestPost.data.description}</h2>
+              </div>
+              <h2 class="text-xs font-bold">
+                {formatDate(latestPost.data.pubDate)}
+              </h2>
+            </div>
+          </div>
+        </a>
+      </div>
     </main>
   </body>
 </Layout>

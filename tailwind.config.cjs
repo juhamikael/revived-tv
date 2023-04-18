@@ -8,11 +8,6 @@ module.exports = {
       fontFamily: {
         montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
       },
-      variants: {
-        extend: {
-          textColor: ["visited"],
-        },
-      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

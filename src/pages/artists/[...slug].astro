@@ -15,45 +15,13 @@ export async function getStaticPaths() {
 }
 const { artist } = Astro.props;
 const artist_slug = artist.data.slug;
-console.log("Artist", artist_slug);
 
 const current_artist = await getCollection("artists");
 const artist_data = current_artist.find(
   (artist) => artist.data.slug === artist_slug
 );
 
-const logos = {
-  spotify: {
-    name: "Spotify",
-    logoPack: "mdi",
-    logoName: "spotify",
-  },
-  youtube: {
-    name: "YouTube",
-    logoPack: "mdi",
-    logoName: "youtube",
-  },
-  soundcloud: {
-    name: "SoundCloud",
-    logoPack: "mdi",
-    logoName: "soundcloud",
-  },
-  instagram: {
-    name: "Instagram",
-    logoPack: "mdi",
-    logoName: "instagram",
-  },
-  twitter: {
-    name: "Twitter",
-    logoPack: "mdi",
-    logoName: "twitter",
-  },
-  discord: {
-    name: "Discord",
-    logoPack: "mdi",
-    logoName: "discord",
-  },
-};
+import { socialMedia } from "../../utils/navbarItems";
 ---
 
 <Layout>
@@ -89,8 +57,8 @@ const logos = {
                   class="mx-2"
                 >
                   <Icon
-                    pack={logos[platform].logoPack}
-                    name={logos[platform].logoName}
+                    pack={socialMedia[platform].logoPack}
+                    name={socialMedia[platform].logoName}
                     size="1x"
                   />
                 </a>
