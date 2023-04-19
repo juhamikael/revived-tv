@@ -1,11 +1,6 @@
 import { useState } from "react";
-import { TextInput, Textarea, Button, Group, Box } from "@mantine/core";
 import "../../styles/artists.css";
 import "../../styles/errors.css";
-
-import DiscordService from "./DiscordService";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 interface IForm {
   name: string;
@@ -36,7 +31,6 @@ const SayHi = () => {
     subject: null,
   } as IFormErrors);
 
-  const { send } = DiscordService({ submitForm });
   const validateForm = (formValues: IForm): IFormErrors => {
     const errors: IFormErrors = {
       name: null,
@@ -71,100 +65,101 @@ const SayHi = () => {
 
     const errors = validateForm(formValues);
     setFormErrors(errors);
-
-    if (!errors.name && !errors.email && !errors.message) {
-      toast.success("Message sent!");
-    }
   };
 
   return (
-    <>
-      <form onSubmit={(e) => handleSubmit(e, submitForm)}>
-        <div className="text-white font-montserrat flex flex-col gap-y-4">
-          <section>
-            <div>
-              <span>Name</span>
-            </div>
-            <TextInput
-              className={formErrors.name ? "error-input" : ""}
-              withAsterisk
-              label={null}
-              placeholder="Jeff"
-              onChange={(e) =>
-                setSubmitForm({ ...submitForm, name: e.target.value })
-              }
-            />
-            <p>
-              {formErrors.name && (
-                <span className="error-text">{formErrors.name}</span>
-              )}
-            </p>
-          </section>
-          <section>
-            <div>Email</div>
-            <TextInput
-              className={formErrors.email ? "error-input" : ""}
-              withAsterisk
-              label={null}
-              placeholder="your@email.com"
-              onChange={(e) =>
-                setSubmitForm({ ...submitForm, email: e.target.value })
-              }
-            />
-            <p>
-              {formErrors.email && (
-                <span className="error-text">{formErrors.email}</span>
-              )}
-            </p>
-          </section>
-          <section>
-            <div>Subject</div>
-            <TextInput
-              className={formErrors.message ? "error-input" : ""}
-              withAsterisk
-              label={null}
-              placeholder="My name is Jeff"
-              onChange={(e) =>
-                setSubmitForm({ ...submitForm, message: e.target.value })
-              }
-            />
-            <p>
-              {formErrors.email && (
-                <span className="error-text">{formErrors.subject}</span>
-              )}
-            </p>
-          </section>
-          <section>
-            <div>Message</div>
-            <Textarea
-              className={formErrors.message ? "error-input" : ""}
-              withAsterisk
-              label={null}
-              placeholder="I am a big fan of your work!"
-              onChange={(e) =>
-                setSubmitForm({ ...submitForm, message: e.target.value })
-              }
-              minRows={4}
-            />
-          </section>
-          <p>
-            {formErrors.message && (
-              <span className="error-text">{formErrors.message}</span>
-            )}
-          </p>
-        </div>
+    <div className="flex justify-center mt-8">
+      <div className="w-full">
+        <form onSubmit={(e) => handleSubmit(e, submitForm)}>
+          <div className="text-white font-montserrat flex flex-col gap-y-4">
+            <section>
+              <div>
+                <span>Name</span>
+              </div>
+              <input
+                className={`${
+                  formErrors.name ? "error-input" : ""
+                } w-full p-2 rounded-md`}
+                placeholder="Jeff"
+                onChange={(e) =>
+                  setSubmitForm({ ...submitForm, name: e.target.value })
+                }
+              />
+              <p>
+                {formErrors.name && (
+                  <span className="error-text">{formErrors.name}</span>
+                )}
+              </p>
+            </section>
+            <section>
+              <div>Email</div>
+              <input
+                className={`${
+                  formErrors.email ? "error-input" : ""
+                } w-full p-2 rounded-md`}
+                placeholder="your@email.com"
+                onChange={(e) =>
+                  setSubmitForm({ ...submitForm, email: e.target.value })
+                }
+              />
+              <p>
+                {formErrors.email && (
+                  <span className="error-text">{formErrors.email}</span>
+                )}
+              </p>
+            </section>
+            <section>
+              <div>Subject</div>
+              <input
+                className={`${
+                  formErrors.subject ? "error-input" : ""
+                } w-full p-2 rounded-md`}
+                placeholder="My name is Jeff"
+                onChange={(e) =>
+                  setSubmitForm({ ...submitForm, message: e.target.value })
+                }
+              />
+              <p>
+                {formErrors.subject && (
+                  <span className="error-text">{formErrors.subject}</span>
+                )}
+              </p>
+            </section>
+            <section>
+              <div>Message</div>
+              <textarea
+                className={`${
+                  formErrors.email ? "error-input" : ""
+                } w-full p-2 rounded-md h-40`}
+                placeholder="I am a big fan of your work!"
+                onChange={(e) =>
+                  setSubmitForm({ ...submitForm, message: e.target.value })
+                }
+              />
+              <p>
+                {formErrors.message && (
+                  <span
+                    className="error-text"
+                    style={{
+                      marginTop: "10px",
+                    }}
+                  >
+                    {formErrors.message}
+                  </span>
+                )}
+              </p>
+            </section>
+          </div>
 
-        <Group position="left" mt="md">
           <button
-            className="p-3 rounded-lg bg-orange-500 text-white font-bold font-montserrat text-xs hover:bg-orange-400 zoom"
+            className="mt-8 p-3 rounded-lg bg-orange-500 text-white font-bold font-montserrat text-xs hover:bg-orange-400 zoom"
             type="submit"
           >
             Submit
           </button>
-        </Group>
-      </form>
-      <ToastContainer />
-    </>
+        </form>
+      </div>
+    </div>
   );
 };
 
