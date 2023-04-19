@@ -32,6 +32,7 @@ const artists = defineCollection({
           "soundcloud",
           "twitter",
           "discord",
+          "homepage",
         ];
         return Object.keys(value).every((key) => allowedKeys.includes(key));
       },

@@ -29,4 +29,9 @@ export const socialMedia = {
     logoPack: "mdi",
     logoName: "discord",
   },
+  homepage: {
+    name: "Homepage",
+    logoPack: "ri",
+    logoName: "global-line",
+  },
 };
