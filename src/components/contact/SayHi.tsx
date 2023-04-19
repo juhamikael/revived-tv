@@ -79,7 +79,7 @@ const SayHi = () => {
               <input
                 className={`${
                   formErrors.name ? "error-input" : ""
-                } w-full p-2 rounded-md`}
+                } w-full p-2 rounded-md text-black`}
                 placeholder="Jeff"
                 onChange={(e) =>
                   setSubmitForm({ ...submitForm, name: e.target.value })
@@ -96,7 +96,7 @@ const SayHi = () => {
               <input
                 className={`${
                   formErrors.email ? "error-input" : ""
-                } w-full p-2 rounded-md`}
+                } w-full p-2 rounded-md text-black`}
                 placeholder="your@email.com"
                 onChange={(e) =>
                   setSubmitForm({ ...submitForm, email: e.target.value })
@@ -113,10 +113,10 @@ const SayHi = () => {
               <input
                 className={`${
                   formErrors.subject ? "error-input" : ""
-                } w-full p-2 rounded-md`}
+                } w-full p-2 rounded-md text-black`}
                 placeholder="My name is Jeff"
                 onChange={(e) =>
-                  setSubmitForm({ ...submitForm, message: e.target.value })
+                  setSubmitForm({ ...submitForm, subject: e.target.value })
                 }
               />
               <p>
@@ -130,7 +130,7 @@ const SayHi = () => {
               <textarea
                 className={`${
                   formErrors.email ? "error-input" : ""
-                } w-full p-2 rounded-md h-40`}
+                } w-full p-2 rounded-md h-40 text-black`}
                 placeholder="I am a big fan of your work!"
                 onChange={(e) =>
                   setSubmitForm({ ...submitForm, message: e.target.value })
