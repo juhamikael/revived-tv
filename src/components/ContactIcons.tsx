@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { socialMedia } from "../utils/navbarItems";
 const socialMediaHref = {
   instagram: "https://www.instagram.com/revived.records/",
   spotify:
@@ -41,7 +40,6 @@ type IContactIconsProps = {
 };
 
 const ContactIcons: React.FC<IContactIconsProps> = ({ socialMedia, color }) => {
-  console.log(icons[socialMedia].logo);
   return (
     <a href={socialMediaHref[socialMedia]} target="_blank">
       <Icon
