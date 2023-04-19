@@ -1,0 +1,30 @@
+/* Tailwind orange 400 */
+$tabs-active-color: #f97316;
+
+.tabs-container {
+  .tabs {
+    .tab-list {
+      display: flex;
+      gap: 4rem;
+      list-style-type: none;
+      padding: 0;
+    }
+    .tab {
+      cursor: pointer;
+      white-space: nowrap;
+      padding: 0.5rem 0;
+      font-weight: 600;
+      width: 100%;
+      text-align: center;
+      &.active {
+        border-bottom: 2px solid $tabs-active-color;
+      }
+    }
+    .tab-content {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
