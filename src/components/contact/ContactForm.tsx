@@ -1,116 +1,62 @@
-import AudioForm from "./AudioForm";
-import ImageForm from "./ImageForm";
+import React, { useState } from "react";
 import SayHi from "./SayHi";
-import { Tabs, TabsProps, rem } from "@mantine/core";
-import { Icon } from "@iconify/react";
-const Contact: React.FC = () => {
-  return (
-    <div className="flex justify-center">
-      <div className="w-2/4">
-        <StyledTabs defaultValue="say-hi" className="w-full">
-          <Tabs.List>
-            <Tabs.Tab
-              value="say-hi"
-              icon={<Icon icon="ri:file-music-fill" />}
-              className="w-full"
-            >
-              Say Hi
-            </Tabs.Tab>
-            {/* <Tabs.Tab
-            value="music-submission"
-            icon={<Icon icon="ri:file-music-fill" />}
-            className="w-60"
-          >
-            Music Submission
-          </Tabs.Tab>
-          <Tabs.Tab
-            value="image-submission"
-            icon={<Icon icon="ri:file-music-fill" />}
-            className="w-60"
-          >
-            Image Submission
-          </Tabs.Tab> */}
-          </Tabs.List>
-          <Tabs.Panel value="say-hi" pt="xs">
-            <SayHi />
-          </Tabs.Panel>
-          {/* 
-        <Tabs.Panel value="music-submission" pt="xs">
-          <AudioForm />
-        </Tabs.Panel> */}
+import "../../styles/Tabs.scss";
 
-          {/* <Tabs.Panel value="image-submission" pt="xs">
-          <ImageForm />
-        </Tabs.Panel> */}
-        </StyledTabs>
+const Contact = () => {
+  const [activeTab, setActiveTab] = useState("say-hi");
+
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  return (
+    <div className="tabs-container flex justify-center">
+      {/**at div#form w-1/3 only when Submit Music and Submit Image is disabled   */}
+      <div id="form" className="tabs w-1/3">
+        <ul className="tab-list text-white font-montserrat">
+          <li
+            className={`tab  ${activeTab === "say-hi" ? "active" : ""}`}
+            onClick={() => handleTabChange("say-hi")}
+          >
+            Say Hi
+          </li>
+          {/* <li
+            className={`tab  ${activeTab === "submit-music" ? "active" : ""}`}
+            onClick={() => handleTabChange("submit-music")}
+          >
+            Submit Music
+          </li>
+          <li
+            className={`tab ${activeTab === "submit-image" ? "active" : ""}`}
+            onClick={() => handleTabChange("submit-image")}
+          >
+            Submit Image
+          </li> */}
+        </ul>
+        <div className="tab-contents">
+          <div
+            className={`tab-content ${activeTab === "say-hi" ? "active" : ""}`}
+          >
+            <SayHi />
+          </div>
+          <div
+            className={`tab-content ${
+              activeTab === "submit-music" ? "active" : ""
+            }`}
+          >
+            <div>Audio Form</div>
+          </div>
+          <div
+            className={`tab-content ${
+              activeTab === "submit-image" ? "active" : ""
+            }`}
+          >
+            <div>Image Form</div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Contact;
-
-function StyledTabs(props: TabsProps) {
-  return (
-    <Tabs
-      unstyled
-      styles={(theme) => ({
-        tab: {
-          ...theme.fn.focusStyles(),
-          backgroundColor:
-            theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
-          color:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[0]
-              : theme.colors.orange[4],
-          border: `${rem(1)} solid ${
-            theme.colorScheme === "dark"
-              ? theme.colors.orange[4]
-              : theme.colors.orange[4]
-          }`,
-          padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-          cursor: "pointer",
-          fontSize: theme.fontSizes.sm,
-          display: "flex",
-          alignItems: "center",
-
-          "&:disabled": {
-            opacity: 0.5,
-            cursor: "not-allowed",
-          },
-
-          "&:not(:first-of-type)": {
-            borderLeft: 0,
-          },
-
-          "&:first-of-type": {
-            borderTopLeftRadius: theme.radius.md,
-            borderBottomLeftRadius: theme.radius.md,
-          },
-
-          "&:last-of-type": {
-            borderTopRightRadius: theme.radius.md,
-            borderBottomRightRadius: theme.radius.md,
-          },
-
-          "&[data-active]": {
-            backgroundColor: theme.colors.orange[7],
-            borderColor: theme.colors.orange[7],
-            color: theme.white,
-          },
-        },
-
-        tabIcon: {
-          marginRight: theme.spacing.xs,
-          display: "flex",
-          alignItems: "center",
-        },
-
-        tabsList: {
-          display: "flex",
-        },
-      })}
-      {...props}
-    />
-  );
-}
