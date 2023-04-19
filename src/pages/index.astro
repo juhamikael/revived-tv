@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Carousel from "../components/CustomCarousel";
 import { getCollection } from "astro:content";
 
 // Get latest blog post
@@ -15,20 +14,13 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<Layout client:load>
+<Layout>
   <body>
     <main class="flex justify-center">
-      <!-- <Carousel
-        images={[
-          "images/carousel/Carousel_1.png",
-          "images/carousel/Carousel_2.png",
-        ]}
-      /> -->
-
-      <div class="mt-10 font-montserrat w-1/2">
+      <div class="mt-10 font-montserrat w-5/12">
         <a class="text-white" href={`news/${latestPost.slug}`}>
           <div class="border border-white/10 rounded-xl w-full pb-10 relative">
-            <img src="images/carousel/Carousel_1.png" class="rounded-xl" />
+            <img src={latestPost.data.heroImage} class="rounded-xl w-full" />
             <h2
               class="text-lg font-bold absolute top-4 left-4 bg-black bg-opacity-50 px-2 py-1 rounded-br-md"
             >
