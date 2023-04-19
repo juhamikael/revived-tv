@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import Markdown from "@astrojs/markdown-component";
 import ArtistCard from "../../components/ArtistCard.astro";
 
 const artists = (await getCollection("artists")).sort(

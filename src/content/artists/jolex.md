@@ -1,7 +1,7 @@
 ---
 name: Jol3x
 customSlug: jolex
-index: 3
+index: 2
 artistType: ["Artist", "Composer", "DJ", "Producer", "Visual"]
 socials:
   spotify: "https://open.spotify.com/artist/4BR8Vv00g1u2KyAY0DzXUE?si=661556705f8b402a"

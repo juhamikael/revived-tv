@@ -7,7 +7,6 @@
   animation: zoom 0.2s ease-in-out;
   animation-fill-mode: forwards;
 }
-/*When hover is left return slowly*/
 
 .video-shadow {
   transition: box-shadow 0.3s;

@@ -1,12 +1,13 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-
 import ContactIcons from "../ContactIcons";
 ---
 
 <header class="flex justify-center">
   <section class="flex items-center gap-x-8">
-    <img alt="logo" src="/images/revived-logo.svg" height={60} width={60} />
+    <a href="/">
+      <img alt="logo" src="/images/revived-logo.svg" height={60} width={60} />
+    </a>
     <nav class="flex font-montserrat text-white gap-x-4">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/artists">Artists</HeaderLink>
@@ -14,7 +15,7 @@ import ContactIcons from "../ContactIcons";
       <HeaderLink href="/music">Music</HeaderLink>
       <HeaderLink href="/news">News</HeaderLink>
       <HeaderLink href="/contact">Contact</HeaderLink>
-      <div class="flex items-center gap-x-2 ml-3">
+      <div class="flex items-center gap-x-4 ml-3">
         <ContactIcons socialMedia="spotify" client:idle />
         <ContactIcons socialMedia="instagram" client:idle />
         <ContactIcons socialMedia="youtube" client:idle />

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import musicData from "../utils/music-data";
 import { Icon } from "@iconify/react";
 import "../styles/artists.css";
+import "../styles/underline-hover.css";
+
 interface PlatformData {
   youtube: string[];
   spotify: string;
@@ -49,7 +51,6 @@ const ArtistList: React.FC = () => {
           const artistData = typedMusicData[key];
           const { name, data } = artistData;
           const isOpen = openedArtist === name;
-          console.log(name);
 
           return (
             <>
@@ -59,12 +60,20 @@ const ArtistList: React.FC = () => {
               >
                 <div className="w-full flex justify-between">
                   {name === "Revived." ? (
-                    <span className="flex flex-row items-center">
+                    <span
+                      className={`flex flex-row items-center underline-hover ${
+                        isOpen ? "active" : ""
+                      }`}
+                    >
                       {"Releases by "}
                       {name}
                     </span>
                   ) : (
-                    <span className="flex flex-row items-center">
+                    <span
+                      className={`flex flex-row items-center underline-hover ${
+                        isOpen ? "active" : ""
+                      }`}
+                    >
                       Music by {name}{" "}
                     </span>
                   )}
@@ -116,7 +125,9 @@ const ArtistList: React.FC = () => {
                     </button>
                     <button
                       className={`text-white ${
-                        selectedPlatform === Platform.Spotify ? "font-bold" : ""
+                        selectedPlatform === Platform.Spotify
+                          ? "font-bold "
+                          : ""
                       }`}
                       onClick={() => selectPlatform(Platform.Spotify)}
                     >
@@ -146,19 +157,17 @@ const ArtistList: React.FC = () => {
                       })}
                     </div>
                   )}
-                  {selectedPlatform === Platform.SoundCloud &&
-                    (console.log(),
-                    (
-                      <>
-                        <iframe
-                          width="100%"
-                          height="300"
-                          allow="autoplay"
-                          src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/revived-playlists/sets/${data.soundcloud}&color=%23ff9800&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
-                        ></iframe>
-                        ;
-                      </>
-                    ))}
+                  {selectedPlatform === Platform.SoundCloud && (
+                    <>
+                      <iframe
+                        width="100%"
+                        height="300"
+                        allow="autoplay"
+                        src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/revived-playlists/sets/${data.soundcloud}&color=%23ff9800&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+                      ></iframe>
+                      ;
+                    </>
+                  )}
                   {selectedPlatform === Platform.Spotify && (
                     <iframe
                       src={data.spotify}
