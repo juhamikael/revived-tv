@@ -46,7 +46,7 @@ const ArtistList: React.FC = () => {
 
   return (
     <div className="flex justify-center ">
-      <div className="w-1/3">
+      <div className="w-full mx-4 lg:mx-0 lg:w-1/3">
         {Object.keys(typedMusicData).map((key) => {
           const artistData = typedMusicData[key];
           const { name, data } = artistData;
@@ -83,7 +83,12 @@ const ArtistList: React.FC = () => {
                       icon={
                         isOpen ? "carbon:chevron-up" : "carbon:chevron-down"
                       }
-                      className="inline-block"
+                      className={`${
+                        isOpen
+                          ? "inline-block active text-orange-400 font-bold"
+                          : ""
+                      }
+                        `}
                     />
                   </span>
                 </div>
@@ -146,7 +151,7 @@ const ArtistList: React.FC = () => {
                       {data.youtube.map((id) => {
                         return (
                           <iframe
-                            className="rounded-3xl w-full"
+                            className="rounded-3xl h-28 lg:h-full w-full"
                             width="400"
                             height="160"
                             src={`https://www.youtube.com/embed/${id}`}
@@ -158,25 +163,26 @@ const ArtistList: React.FC = () => {
                     </div>
                   )}
                   {selectedPlatform === Platform.SoundCloud && (
-                    <>
+                    <div>
                       <iframe
                         width="100%"
                         height="300"
                         allow="autoplay"
                         src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/revived-playlists/sets/${data.soundcloud}&color=%23ff9800&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
                       ></iframe>
-                      ;
-                    </>
+                    </div>
                   )}
                   {selectedPlatform === Platform.Spotify && (
-                    <iframe
-                      src={data.spotify}
-                      className="mt-4 mb-10"
-                      width="650"
-                      height="380"
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                    ></iframe>
+                    <div className="spotify-container">
+                      <iframe
+                        src={data.spotify}
+                        className="mt-4 mb-10"
+                        width="650"
+                        height="380"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      ></iframe>
+                    </div>
                   )}
                 </>
               )}

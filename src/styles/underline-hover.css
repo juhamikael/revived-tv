@@ -18,6 +18,7 @@
   height: 2px;
   top: 100%;
   left: 0;
+  margin-top: 3px;
   background-color: #f6993f;
   transition: transform 0.5s;
   transform: scaleX(0);

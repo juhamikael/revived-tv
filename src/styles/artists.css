@@ -12,6 +12,28 @@
   transition: box-shadow 0.3s;
 }
 
+.spotify-container {
+  position: relative;
+  padding-bottom: 60%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.spotify-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 767px) {
+  .spotify-container {
+    padding-bottom: 40%; /* Adjust this value as needed */
+  }
+}
+
 @keyframes zoom {
   0% {
     transform: scale(0.95);

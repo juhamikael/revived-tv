@@ -36,16 +36,21 @@ const icons = {
 
 type IContactIconsProps = {
   socialMedia: string;
+  className?: string;
   color?: string;
 };
 
-const ContactIcons: React.FC<IContactIconsProps> = ({ socialMedia, color }) => {
+const ContactIcons: React.FC<IContactIconsProps> = ({
+  socialMedia,
+  className,
+  color,
+}) => {
   return (
     <a href={socialMediaHref[socialMedia]} target="_blank">
       <Icon
         icon={icons[socialMedia].logo}
         height={25}
-        className={`${color ? color : ""}`}
+        className={`${color ? color : ""} ${className ? className : ""}`}
       />
     </a>
   );

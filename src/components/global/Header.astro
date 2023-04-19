@@ -1,27 +1,53 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import ContactIcons from "../ContactIcons";
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 ---
 
-<header class="flex justify-center">
-  <section class="flex items-center gap-x-8">
+<header
+  class="fixed top-0 left-0 right-0 z-50 flex justify-center bg-[#0f0f0f] text-white"
+>
+  <section class="flex items-center gap-x-8 my-5">
     <a href="/">
-      <img alt="logo" src="/images/revived-logo.svg" height={60} width={60} />
+      <img alt="logo" src="/images/revived-logo.svg" class="h-16" />
     </a>
-    <nav class="flex font-montserrat text-white gap-x-4">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/artists">Artists</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/music">Music</HeaderLink>
-      <HeaderLink href="/news">News</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-      <div class="flex items-center gap-x-4 ml-3">
-        <ContactIcons socialMedia="spotify" client:idle />
-        <ContactIcons socialMedia="instagram" client:idle />
-        <ContactIcons socialMedia="youtube" client:idle />
-        <ContactIcons socialMedia="discord" client:idle />
+    <Astronav>
+      <div class="block lg:hidden">
+        <MenuIcon class="h-4 w-4 text-white" />
       </div>
-    </nav>
+      <MenuItems class="hidden text-sm lg:flex">
+        <ul class="flex flex-col gap-y-4 lg:flex-row lg:gap-4">
+          <HeaderLink href="/">Home</HeaderLink>
+          <HeaderLink href="/artists">Artists</HeaderLink>
+          <HeaderLink href="/about">About</HeaderLink>
+          <HeaderLink href="/music">Music</HeaderLink>
+          <HeaderLink href="/news">News</HeaderLink>
+          <HeaderLink href="/contact">Contact</HeaderLink>
+        </ul>
+        <div class="mx-6 mt-4 flex lg:mt-[0px]">
+          <ContactIcons
+            className="ml-4 lg:ml-2"
+            socialMedia="spotify"
+            client:idle
+          />
+          <ContactIcons
+            className="ml-4 lg:ml-2"
+            socialMedia="instagram"
+            client:idle
+          />
+          <ContactIcons
+            className="ml-4 lg:ml-2"
+            socialMedia="youtube"
+            client:idle
+          />
+          <ContactIcons
+            className="ml-4 lg:ml-2"
+            socialMedia="discord"
+            client:idle
+          />
+        </div>
+      </MenuItems>
+    </Astronav>
   </section>
 </header>
 <style>

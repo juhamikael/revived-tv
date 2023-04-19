@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <div className="tabs-container flex justify-center">
       {/**at div#form w-1/3 only when Submit Music and Submit Image is disabled   */}
-      <div id="form" className="tabs w-1/3">
+      <div id="form" className="tabs mx-4 lg:mx-0 w-full lg:w-1/3">
         <ul className="tab-list text-white font-montserrat">
           <li
             className={`tab  ${activeTab === "say-hi" ? "active" : ""}`}

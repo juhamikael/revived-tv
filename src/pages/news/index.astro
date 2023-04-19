@@ -11,7 +11,7 @@ const posts = (await getCollection("news")).sort(
 
 <Layout>
   <section class="flex justify-center">
-    <ul class="w-2/4">
+    <ul class="w-full lg:w-2/4">
       {
         posts.map((post) => (
           <li class="flex text-white font-montserrat justify-center my-6 zoom">

@@ -1,7 +1,7 @@
 ---
 title: "Revived. launched."
 description: "Our journey begins."
-pubDate: "May 22 2023"
+pubDate: "4-22-2023"
 heroImage: "/images/carousel/Carousel_1.png"
 ---
 

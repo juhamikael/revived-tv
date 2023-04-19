@@ -6,13 +6,15 @@ const about = await getCollection("about");
 ---
 
 <Layout>
-  <section class="flex justify-center">
+  <section class="flex justify-center mx-4 lg:mx-0">
     {
       about.map((data) => (
         <div class="font-montserrat">
           <h2 class="text-3xl font-bold my-2 text-white">{data.data.title}</h2>
           <Markdown>
-            <section class="prose dark:prose-invert">{data.body}</section>
+            <article class="prose prose-sm dark:prose-invert max-w-1/3 ">
+              {data.body}
+            </article>
           </Markdown>
         </div>
       ))
