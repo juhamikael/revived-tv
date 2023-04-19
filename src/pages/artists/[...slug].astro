@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Markdown from "@astrojs/markdown-component";
 import { Icon } from "astro-icon";
-import SpotifyPlayer from "../../components/SpotifyPlayer.astro";
 import { socialMedia } from "../../utils/navbarItems";
 import { mapList } from "../../utils/functions";
+import { parseSpotifyUrl } from "../../utils/functions";
+import "../../styles/artists.css";
 
 export async function getStaticPaths() {
   const blog = await getCollection("artists");
@@ -25,13 +26,15 @@ const artist_data = current_artist.find(
 
 <Layout>
   <div class="flex justify-center">
-    <div class="w-2/4">
-      <section class="grid grid-cols-2 font-montserrat text-3xl">
+    <div class="w-full lg:w-2/4">
+      <section
+        class="grid md:grid-cols-2 md:gap-x-4 lg:grid-cols-2 font-montserrat text-3xl"
+      >
         <img
           src={artist_data?.data.image}
-          class="object-fit h-[600px] w-full mt-10 object-cover rounded-3xl"
+          class="object-fit lg:h-[600px] w-full mt-10 object-cover rounded-3xl"
         />
-        <section id="basic-info" class="mt-14 mx-10 text-white w-full">
+        <section id="basic-info" class="mt-14 lg:mx-10 text-white w-full">
           <h1 class="font-bold">{artist_data?.data.name}</h1>
           <hr class="border-gray-500 my-2" />
           <div class="my-1">
@@ -70,10 +73,23 @@ const artist_data = current_artist.find(
       <section id="music">
         {
           artist_data?.data.spotify && (
-            <section class="mt-16">
-              <hr class="border-gray-500 my-12" />
-              <div class="">
-                <SpotifyPlayer spotifyUrl={artist_data?.data.spotify} />
+            <section class="mt-4">
+              <div class="flex justify-center">
+                <hr class="border-gray-500 my-8 w-2/3" />
+              </div>
+              <div class="text-2xl font-bold text-white">Stream</div>
+
+              <div class="spotify-container">
+                <iframe
+                  src={`https://open.spotify.com/embed/artist/${parseSpotifyUrl(
+                    artist_data?.data.spotify
+                  )}?utm_source=generator&theme=0`}
+                  class="mt-4 mb-10"
+                  width="1000"
+                  height="380"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
               </div>
             </section>
           )

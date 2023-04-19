@@ -2,6 +2,7 @@
 import { CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import Markdown from "@astrojs/markdown-component";
+import "../../styles/artists.css";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
