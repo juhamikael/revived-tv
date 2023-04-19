@@ -16,12 +16,14 @@ const post = Astro.props;
 ---
 
 <BlogPost {...post.data}>
-  <div class="font-montserrat">
-    <Markdown>
-      <h1 class="text-xl text-white font-bold">{post.data.description}</h1>
-      <section class="prose prose-sm dark:prose-invert">
-        {post?.body}
-      </section>
-    </Markdown>
+  <div class="flex justify-center">
+    <div class="font-montserrat">
+      <Markdown>
+        <h1 class="text-xl text-white font-bold">{post.data.description}</h1>
+        <section class="prose max-w-none prose-sm dark:prose-invert">
+          {post?.body}
+        </section>
+      </Markdown>
+    </div>
   </div>
 </BlogPost>

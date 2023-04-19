@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import Markdown from "@astrojs/markdown-component";
 import { Icon } from "astro-icon";
 import SpotifyPlayer from "../../components/SpotifyPlayer.astro";
+import { socialMedia } from "../../utils/navbarItems";
 import { mapList } from "../../utils/functions";
 
 export async function getStaticPaths() {
@@ -20,8 +21,6 @@ const current_artist = await getCollection("artists");
 const artist_data = current_artist.find(
   (artist) => artist.data.customSlug === artist_slug
 );
-
-import { socialMedia } from "../../utils/navbarItems";
 ---
 
 <Layout>
@@ -32,7 +31,7 @@ import { socialMedia } from "../../utils/navbarItems";
           src={artist_data?.data.image}
           class="object-fit h-[600px] w-full mt-10 object-cover rounded-3xl"
         />
-        <section id="basic-info" class="mt-5 mx-10 text-white w-full">
+        <section id="basic-info" class="mt-14 mx-10 text-white w-full">
           <h1 class="font-bold">{artist_data?.data.name}</h1>
           <hr class="border-gray-500 my-2" />
           <div class="my-1">
@@ -50,21 +49,18 @@ import { socialMedia } from "../../utils/navbarItems";
             {
               Object.entries(artist_data?.data.socials || {}).map(
                 ([platform, url]) => (
-                  console.log("Platform", platform),
-                  (
-                    <a
-                      href={url || ""}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="mx-2"
-                    >
-                      <Icon
-                        pack={socialMedia[platform].logoPack}
-                        name={socialMedia[platform].logoName}
-                        size="1x"
-                      />
-                    </a>
-                  )
+                  <a
+                    href={url || ""}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mx-2"
+                  >
+                    <Icon
+                      pack={socialMedia[platform].logoPack}
+                      name={socialMedia[platform].logoName}
+                      size="1x"
+                    />
+                  </a>
                 )
               )
             }
