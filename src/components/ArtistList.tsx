@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import musicData from "../utils/music-data";
 import { Icon } from "@iconify/react";
 import "../styles/artists.css";
-import { parseSpotifyUrl } from "../utils/functions";
 interface PlatformData {
   youtube: string[];
   spotify: string;
@@ -50,6 +49,7 @@ const ArtistList: React.FC = () => {
           const artistData = typedMusicData[key];
           const { name, data } = artistData;
           const isOpen = openedArtist === name;
+          console.log(name);
 
           return (
             <>
@@ -58,7 +58,17 @@ const ArtistList: React.FC = () => {
                 onClick={() => toggleArtist(name)}
               >
                 <div className="w-full flex justify-between">
-                  Music by {name}{" "}
+                  {name === "Revived." ? (
+                    <span className="flex flex-row items-center">
+                      {"Releases by "}
+                      {name}
+                    </span>
+                  ) : (
+                    <span className="flex flex-row items-center">
+                      Music by {name}{" "}
+                    </span>
+                  )}
+
                   <span>
                     <Icon
                       icon={
@@ -144,16 +154,14 @@ const ArtistList: React.FC = () => {
                           width="100%"
                           height="300"
                           allow="autoplay"
-                          src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/revived-tv-juha/sets/${data.soundcloud}&color=%23ff9800&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+                          src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/revived-playlists/sets/${data.soundcloud}&color=%23ff9800&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
                         ></iframe>
                         ;
                       </>
                     ))}
                   {selectedPlatform === Platform.Spotify && (
                     <iframe
-                      src={`https://open.spotify.com/embed/artist/${parseSpotifyUrl(
-                        data.spotify
-                      )}?utm_source=generator&theme=0`}
+                      src={data.spotify}
                       className="mt-4 mb-10"
                       width="650"
                       height="380"
