@@ -1,4 +1,4 @@
-const AudioForm = () => {
+const ImageForm = () => {
   return (
     <>
       <div>Image Form</div>
@@ -6,4 +6,4 @@ const AudioForm = () => {
   );
 };
 
-export default AudioForm;
+export default ImageForm;
