@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import "../../styles/artists.css";
+import "../../styles/news.css";
+
 import { Icon } from "astro-icon";
 const posts = (await getCollection("news")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -24,7 +26,12 @@ const posts = (await getCollection("news")).sort(
               </div>
               <div class="flex justify-between gap-x-8">
                 <div class="text-sm ml-8">{post.data.description}</div>
-                <img src={post.data.heroImage} class="w-60 rounded-xl mr-8" />
+                <div class="news-image-container">
+                  <img
+                    src={post.data.heroImage}
+                    class="news-image rounded-xl"
+                  />
+                </div>
               </div>
               <div class="flex mt-10 items-center justify-between mb-4">
                 <FormattedDate

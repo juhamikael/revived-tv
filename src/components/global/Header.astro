@@ -9,10 +9,11 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 >
   <section class="flex items-center gap-x-8 my-5">
     <a href="/">
-      <img alt="logo" src="/images/revived-logo.svg" class="h-16" />
+      <img alt="logo" src="/images/revived-logo.svg" class="h-16 ml-4" />
     </a>
+
     <Astronav>
-      <div class="block lg:hidden">
+      <div class="block lg:hidden" id="navbar">
         <MenuIcon class="h-4 w-4 text-white" />
       </div>
       <MenuItems class="hidden text-sm lg:flex">

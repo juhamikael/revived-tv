@@ -95,7 +95,7 @@ const ArtistList: React.FC = () => {
               </h1>
               {isOpen && (
                 <>
-                  <div className="flex space-x-6 mb-4 font-montserrat">
+                  <div className="flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0 mb-4 font-montserrat">
                     <button
                       className={`text-white ${
                         selectedPlatform === Platform.YouTube ? "font-bold" : ""
@@ -151,7 +151,7 @@ const ArtistList: React.FC = () => {
                       {data.youtube.map((id) => {
                         return (
                           <iframe
-                            className="rounded-3xl h-28 lg:h-full w-full"
+                            className="rounded-3xl h-20 lg:h-full w-full"
                             width="400"
                             height="160"
                             src={`https://www.youtube.com/embed/${id}`}

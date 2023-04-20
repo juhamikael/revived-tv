@@ -30,7 +30,7 @@
 }
 @media screen and (max-width: 767px) {
   .spotify-container {
-    padding-bottom: 40%; /* Adjust this value as needed */
+    padding-bottom: 50%;
   }
 }
 

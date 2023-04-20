@@ -10,20 +10,18 @@ const artists = (await getCollection("artists")).sort(
 
 <Layout>
   <div class="flex justify-center">
-    <div class="">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
-        {
-          artists.map((artist) => (
-            <>
-              <ArtistCard
-                name={artist.data.name}
-                image={artist.data.image}
-                slug={artist.data.customSlug}
-              />
-            </>
-          ))
-        }
-      </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-3 lg:gap-x-6 gap-y-8">
+      {
+        artists.map((artist) => (
+          <>
+            <ArtistCard
+              name={artist.data.name}
+              image={artist.data.image}
+              slug={artist.data.customSlug}
+            />
+          </>
+        ))
+      }
     </div>
   </div>
 </Layout>

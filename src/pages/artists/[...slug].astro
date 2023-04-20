@@ -25,8 +25,14 @@ const artist_data = current_artist.find(
 ---
 
 <Layout>
-  <div class="flex justify-center">
+  <div class="flex justify-center mx-6 lg:mx-0">
     <div class="w-full lg:w-2/4">
+      <div class="underline-hover">
+        <a href="/artists" class="flex flex-row gap-x-2">
+          <Icon pack="charm" name="arrow-left" className="w-5 " />
+          <span class="text-lg">Back</span>
+        </a>
+      </div>
       <section
         class="grid md:grid-cols-2 md:gap-x-4 lg:grid-cols-2 font-montserrat text-3xl"
       >
